@@ -1,6 +1,6 @@
 //
 //  NetworkManager.swift
-//  GZ
+//  Movie
 //
 //  Created by Денис on 02.05.2022.
 //

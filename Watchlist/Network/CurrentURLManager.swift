@@ -1,6 +1,6 @@
 //
 //  CurrentURLManager.swift
-//  GZ
+//  Movie
 //
 //  Created by Денис on 03.05.2022.
 //
