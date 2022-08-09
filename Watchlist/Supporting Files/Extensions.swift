@@ -41,7 +41,7 @@ extension Date {
 
 // MARK: - scrollToTop method
 extension SearchViewController {
-    func scrollToTop() {
+    func scrollToTop() {        
         let topRow = IndexPath(row: 0, section: 0)
         tableView.scrollToRow(at: topRow, at: .top, animated: true)
     }

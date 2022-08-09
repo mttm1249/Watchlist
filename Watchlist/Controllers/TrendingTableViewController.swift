@@ -26,7 +26,7 @@ class TrendingTableViewController: UIViewController, UITableViewDelegate, UITabl
         fetch()
     }
         
-    func addLogo() {
+    private func addLogo() {
         let image = UIImage(named: "logo")
         let imageView = UIImageView(image: image)
         tabBarController?.navigationItem.titleView = imageView

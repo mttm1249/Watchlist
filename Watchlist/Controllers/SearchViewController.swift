@@ -20,6 +20,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        upButton.isEnabled = false
         searchBar.backgroundImage = UIImage()
         tableView.delegate = self
         tableView.dataSource = self
@@ -30,6 +31,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBAction func upButtonAction(_ sender: Any) {
         scrollToTop()
+        upButton.isEnabled = false
     }
     
     //     MARK: Load data from JSON
@@ -117,7 +119,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             self.tableView.tableFooterView = spinner
             self.tableView.tableFooterView?.isHidden = false
-            
+            self.upButton.isEnabled = true
+
             page += 1
             CurrentURL.shared.page = String(page)
             fetch()

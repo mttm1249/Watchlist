@@ -26,14 +26,14 @@ class CustomTableViewCell: UITableViewCell {
         }
         
         let dateString = model.releaseDate
-                            if dateString != "" {
+                            if dateString != nil {
                                 let dateFormatter = DateFormatter()
                                 dateFormatter.dateFormat = "yyyy-MM-dd"
                                 let date = dateFormatter.date(from:dateString!)
-                                let formattedDate = date!.getFormattedDate(format: "MMM d, yyyy")
-                                releaseDateLabel.text = "\(formattedDate)"
+                                let formattedDate = date?.getFormattedDate(format: "MMM d, yyyy")
+                                releaseDateLabel.text = "\(formattedDate ?? defaultString)"
                             } else {
-                                releaseDateLabel.text = ""
+                                releaseDateLabel.text = "Release date unknown"
                             }
         // setup image
         let imageString = model.posterPath ?? defaultString
