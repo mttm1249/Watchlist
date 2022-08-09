@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="customCell" rowHeight="182" id="7Aw-2a-b3x" customClass="CustomTableViewCell" customModule="Movie" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="428" height="182"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7Aw-2a-b3x" id="kyF-bY-Bdd">
+                <rect key="frame" x="0.0" y="0.0" width="428" height="182"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleAspectFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Hbi-XA-aE1">
+                        <rect key="frame" x="140" y="9" width="276" height="161"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="n78-dP-ukC">
+                                <rect key="frame" x="0.0" y="0.0" width="276" height="34.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release Date" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="tuK-b5-Rh4">
+                                <rect key="frame" x="0.0" y="42.5" width="276" height="34"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XvU-qg-ng4">
+                                <rect key="frame" x="0.0" y="84.5" width="276" height="34.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Votes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aet-cE-Ili">
+                                <rect key="frame" x="0.0" y="127" width="276" height="34"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <color key="textColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KyF-Gu-sfW">
+                        <rect key="frame" x="12" y="9" width="120" height="163"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="163" id="4dn-qW-oUl"/>
+                            <constraint firstAttribute="width" constant="120" id="Dx7-Tp-lco"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="6"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" red="0.014351890419999999" green="0.1447237432" blue="0.25621336700000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="KyF-Gu-sfW" secondAttribute="bottom" constant="10" id="9eO-1C-HN3"/>
+                    <constraint firstItem="Hbi-XA-aE1" firstAttribute="top" secondItem="kyF-bY-Bdd" secondAttribute="top" constant="9" id="Zha-0p-OK0"/>
+                    <constraint firstItem="KyF-Gu-sfW" firstAttribute="top" secondItem="kyF-bY-Bdd" secondAttribute="top" constant="9" id="hhx-Ua-K69"/>
+                    <constraint firstItem="KyF-Gu-sfW" firstAttribute="leading" secondItem="kyF-bY-Bdd" secondAttribute="leading" constant="12" id="hiM-UD-5JK"/>
+                    <constraint firstItem="Hbi-XA-aE1" firstAttribute="leading" secondItem="KyF-Gu-sfW" secondAttribute="trailing" constant="8" symbolic="YES" id="nMT-4T-aof"/>
+                    <constraint firstAttribute="bottom" secondItem="Hbi-XA-aE1" secondAttribute="bottom" constant="12" id="r7K-oq-WMD"/>
+                    <constraint firstAttribute="trailing" secondItem="Hbi-XA-aE1" secondAttribute="trailing" constant="12" id="viJ-xI-JyG"/>
+                </constraints>
+            </tableViewCellContentView>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+            <connections>
+                <outlet property="movieImage" destination="KyF-Gu-sfW" id="pgu-je-WPl"/>
+                <outlet property="movieNameLabel" destination="n78-dP-ukC" id="96O-we-izz"/>
+                <outlet property="movieVoteLabel" destination="Aet-cE-Ili" id="pUo-GJ-zHg"/>
+                <outlet property="overviewLabel" destination="XvU-qg-ng4" id="7fh-Sk-XzD"/>
+                <outlet property="releaseDateLabel" destination="tuK-b5-Rh4" id="tir-Ui-py0"/>
+            </connections>
+            <point key="canvasLocation" x="205.79710144927537" y="135.9375"/>
+        </tableViewCell>
+    </objects>
+</document>
