@@ -67,16 +67,17 @@ class TrendingTableViewController: UIViewController, UITableViewDelegate, UITabl
             self.tableView.tableFooterView?.isHidden = false
             
             page += 1
-            CurrentURL.shared.page = String(page)
+            URLManager.shared.page = String(page)
             fetch()
         }
     }
     
     //     MARK: Load data from JSON
     private func fetch() {
-        NetworkManager.shared.loadJson(urlString: CurrentURL.shared.baseURL,
-                                       path: CurrentURL.shared.trendingPath,
-                                       params: CurrentURL.shared.params)
+        URLManager.shared.page = "1"
+        NetworkManager.shared.loadJson(urlString: URLManager.shared.baseURL,
+                                       path: URLManager.shared.trendingPath,
+                                       params: URLManager.shared.params)
         {
             [weak self] (result: Result<Trending, Error>) in
             switch result {
@@ -93,7 +94,7 @@ class TrendingTableViewController: UIViewController, UITableViewDelegate, UITabl
                     self?.movies.append(movieModel)
                 }
                 if results.isEmpty {
-                    CurrentURL.shared.page = "1"
+                    URLManager.shared.page = "1"
                     self?.fetch()
                 }
                 self?.tableView.reloadData()

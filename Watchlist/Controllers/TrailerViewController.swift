@@ -11,7 +11,7 @@ import youtube_ios_player_helper
 class TrailerViewController: UIViewController, YTPlayerViewDelegate {
     
     var currentMovieID: Int?
-    private let shared = CurrentURL.shared
+    private let shared = URLManager.shared
     private var currentMovieKey: String?
     private var currentTrailerTitle: String?
     

@@ -8,11 +8,11 @@
 import UIKit
 import CoreData
 
-class DetailsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class DetailsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     var currentMovie = MovieModel()
-    
-    private let shared = CurrentURL.shared
+        
+    private let shared = URLManager.shared
     private var castPersons: [PersonModel] = []
     private var moviesInWatchlist: [Movie] = []
     private var savedMoviesID: [Int] = []
@@ -47,6 +47,12 @@ class DetailsViewController: UIViewController, UICollectionViewDelegate, UIColle
             let trailerVC = segue.destination as! TrailerViewController
             trailerVC.currentMovieID = currentMovie.id
         }
+        
+        if segue.identifier == "showAll" {
+            let allActorsCVC = segue.destination as! AllActorsCollectionViewController
+            allActorsCVC.currentMovieID = currentMovie.id
+        }
+        
     }
     
     private func loadImage() {
@@ -103,7 +109,6 @@ class DetailsViewController: UIViewController, UICollectionViewDelegate, UIColle
                                              character: person.character,
                                              profilePath: person.profilePath)
                     
-                    
                     self?.castPersons.append(person)
                     self?.castCollectionView.reloadData()
                 }
@@ -140,7 +145,7 @@ class DetailsViewController: UIViewController, UICollectionViewDelegate, UIColle
             equalResult = false
         }
     }
-    
+        
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let firstTen = Array(castPersons.prefix(10))
         return firstTen.count
@@ -150,11 +155,19 @@ class DetailsViewController: UIViewController, UICollectionViewDelegate, UIColle
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "personCell", for: indexPath) as? CustomCollectionViewCell {
             cell.setup(model: castPersons[indexPath.row])
             return cell
-            
         }
         return UICollectionViewCell()
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return CGSize(width: 100, height: 100)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "footer", for: indexPath)
+        return footerView
+    }
+        
     func registerCustomCell() {
         let customCell = UINib(nibName: "PersonCell", bundle: nil)
         self.castCollectionView.register(customCell,forCellWithReuseIdentifier: "personCell")

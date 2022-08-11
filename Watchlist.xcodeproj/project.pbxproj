@@ -23,12 +23,13 @@
 		DAA4AF822897E75C00B1B8F9 /* Movie.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DAA4AF802897E75C00B1B8F9 /* Movie.xcdatamodeld */; };
 		DAA4AF842897E75D00B1B8F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA4AF832897E75D00B1B8F9 /* Assets.xcassets */; };
 		DAA4AF872897E75D00B1B8F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAA4AF852897E75D00B1B8F9 /* LaunchScreen.storyboard */; };
-		DAA4AF912897EB0900B1B8F9 /* CurrentURLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA4AF8F2897EB0900B1B8F9 /* CurrentURLManager.swift */; };
+		DAA4AF912897EB0900B1B8F9 /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA4AF8F2897EB0900B1B8F9 /* URLManager.swift */; };
 		DAA4AF922897EB0900B1B8F9 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA4AF902897EB0900B1B8F9 /* NetworkManager.swift */; };
 		DAA9A3B8289BFEA400F4785F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3B7289BFEA400F4785F /* Extensions.swift */; };
 		DAC930E7289E59F2009C10B0 /* Trending.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC930E6289E59F1009C10B0 /* Trending.swift */; };
 		DAC930E9289E5AAD009C10B0 /* TrendingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC930E8289E5AAD009C10B0 /* TrendingTableViewController.swift */; };
 		DACA9F0928A10D3400B52FC7 /* WatchlistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACA9F0828A10D3400B52FC7 /* WatchlistTableViewController.swift */; };
+		DAD742FE28A514E700A2BBC3 /* AllActorsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD742FD28A514E700A2BBC3 /* AllActorsCollectionViewController.swift */; };
 		DAEF5CC7289CF01D007C3292 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF5CC6289CF01D007C3292 /* Search.swift */; };
 		DAFF3905289FE25B00BB83A2 /* TrailerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFF3904289FE25B00BB83A2 /* TrailerViewController.swift */; };
 		DAFF3907289FE78000BB83A2 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFF3906289FE78000BB83A2 /* MovieModel.swift */; };
@@ -56,12 +57,13 @@
 		DAA4AF832897E75D00B1B8F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DAA4AF862897E75D00B1B8F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DAA4AF882897E75D00B1B8F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DAA4AF8F2897EB0900B1B8F9 /* CurrentURLManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentURLManager.swift; sourceTree = "<group>"; };
+		DAA4AF8F2897EB0900B1B8F9 /* URLManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
 		DAA4AF902897EB0900B1B8F9 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		DAA9A3B7289BFEA400F4785F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		DAC930E6289E59F1009C10B0 /* Trending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trending.swift; sourceTree = "<group>"; };
 		DAC930E8289E5AAD009C10B0 /* TrendingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingTableViewController.swift; sourceTree = "<group>"; };
 		DACA9F0828A10D3400B52FC7 /* WatchlistTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistTableViewController.swift; sourceTree = "<group>"; };
+		DAD742FD28A514E700A2BBC3 /* AllActorsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllActorsCollectionViewController.swift; sourceTree = "<group>"; };
 		DAEF5CC6289CF01D007C3292 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		DAFF3904289FE25B00BB83A2 /* TrailerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailerViewController.swift; sourceTree = "<group>"; };
 		DAFF3906289FE78000BB83A2 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				DA47F217289C1E65004C0C0A /* DetailsViewController.swift */,
 				DAFF3904289FE25B00BB83A2 /* TrailerViewController.swift */,
 				DACA9F0828A10D3400B52FC7 /* WatchlistTableViewController.swift */,
+				DAD742FD28A514E700A2BBC3 /* AllActorsCollectionViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -169,7 +172,7 @@
 		DAA4AF8E2897EB0900B1B8F9 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				DAA4AF8F2897EB0900B1B8F9 /* CurrentURLManager.swift */,
+				DAA4AF8F2897EB0900B1B8F9 /* URLManager.swift */,
 				DAA4AF902897EB0900B1B8F9 /* NetworkManager.swift */,
 			);
 			path = Network;
@@ -316,11 +319,12 @@
 				DAA9A3B8289BFEA400F4785F /* Extensions.swift in Sources */,
 				DAC930E7289E59F2009C10B0 /* Trending.swift in Sources */,
 				DAC930E9289E5AAD009C10B0 /* TrendingTableViewController.swift in Sources */,
+				DAD742FE28A514E700A2BBC3 /* AllActorsCollectionViewController.swift in Sources */,
 				DAA4AF922897EB0900B1B8F9 /* NetworkManager.swift in Sources */,
 				DA98210C28A24A030083802E /* CustomCollectionViewCell.swift in Sources */,
 				DAFF3905289FE25B00BB83A2 /* TrailerViewController.swift in Sources */,
 				DAA4AF7C2897E75C00B1B8F9 /* SearchViewController.swift in Sources */,
-				DAA4AF912897EB0900B1B8F9 /* CurrentURLManager.swift in Sources */,
+				DAA4AF912897EB0900B1B8F9 /* URLManager.swift in Sources */,
 				DAA4AF782897E75C00B1B8F9 /* AppDelegate.swift in Sources */,
 				DAA4AF822897E75C00B1B8F9 /* Movie.xcdatamodeld in Sources */,
 				DAA4AF7A2897E75C00B1B8F9 /* SceneDelegate.swift in Sources */,

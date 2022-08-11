@@ -36,9 +36,9 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     //     MARK: Load data from JSON
     private func fetch() {
-        NetworkManager.shared.loadJson(urlString: CurrentURL.shared.baseURL,
-                                       path: CurrentURL.shared.searchPath,
-                                       params: CurrentURL.shared.params)
+        NetworkManager.shared.loadJson(urlString: URLManager.shared.baseURL,
+                                       path: URLManager.shared.searchPath,
+                                       params: URLManager.shared.params)
         {
             [weak self] (result: Result<Search, Error>) in
             switch result {
@@ -55,7 +55,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     self?.movies.append(movieModel)
                 }
                 if results.isEmpty {
-                    CurrentURL.shared.page = "1"
+                    URLManager.shared.page = "1"
                     self?.fetch()
                 }
                 self?.tableView.reloadData()
@@ -101,7 +101,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if searchBar.text != nil {
             movies.removeAll()
-            CurrentURL.shared.query = searchBar.text!
+            URLManager.shared.query = searchBar.text!
             tabBarController?.navigationItem.title = "\(searchBar.text!):"
             searchBar.resignFirstResponder()
         }
@@ -122,7 +122,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             self.upButton.isEnabled = true
 
             page += 1
-            CurrentURL.shared.page = String(page)
+            URLManager.shared.page = String(page)
             fetch()
         }
     }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CurrentURL {
+class URLManager {
     
     // URL
     var baseURL = "https://api.themoviedb.org"
@@ -23,7 +23,8 @@ class CurrentURL {
     
     // Parametres values
     var query = ""
-    var page = "1"
+    var page = ""
+    var movieID = ""
     
     func getTrailerPath(from movieID: Int) -> String {
        let path = "/3/movie/\(movieID))/videos"
@@ -35,7 +36,7 @@ class CurrentURL {
         return path
     }
     
-    static let shared = CurrentURL()
+    static let shared = URLManager()
     private init() {}
 }
 

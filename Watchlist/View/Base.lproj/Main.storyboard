@@ -182,7 +182,7 @@
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="5" id="VGq-9g-HCE">
                                     <size key="itemSize" width="110" height="160"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="81" height="50"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
@@ -196,6 +196,26 @@
                                         <size key="customSize" width="97" height="126"/>
                                     </collectionViewCell>
                                 </cells>
+                                <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="footer" id="cap-Cd-LJv">
+                                    <rect key="frame" x="97" y="0.0" width="81" height="160"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="idV-m5-pwB">
+                                            <rect key="frame" x="15" y="66.666666666666671" width="51" height="27"/>
+                                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="12"/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" title="View All"/>
+                                            <connections>
+                                                <segue destination="123-r8-ahs" kind="presentation" identifier="showAll" id="Ghl-4e-NWd"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="idV-m5-pwB" firstAttribute="centerX" secondItem="cap-Cd-LJv" secondAttribute="centerX" id="YfV-9D-khO"/>
+                                        <constraint firstItem="idV-m5-pwB" firstAttribute="centerY" secondItem="cap-Cd-LJv" secondAttribute="centerY" id="uog-wB-1me"/>
+                                    </constraints>
+                                </collectionReusableView>
                             </collectionView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="zoZ-B0-urg">
                                 <rect key="frame" x="20" y="680" width="351.66666666666669" height="31"/>
@@ -280,6 +300,65 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QFj-Sh-Gvd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1860" y="841.70616113744074"/>
+        </scene>
+        <!--All Actors Collection View Controller-->
+        <scene sceneID="Krc-LI-I36">
+            <objects>
+                <viewController id="123-r8-ahs" customClass="AllActorsCollectionViewController" customModule="Watchlist" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="p9W-7O-XLA">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="m3H-kU-sdd">
+                                <rect key="frame" x="16" y="104" width="358" height="686"/>
+                                <color key="backgroundColor" red="0.014351890419999999" green="0.1447237432" blue="0.25621336700000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hzx-WV-P8N">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="defaultCell" id="oez-cW-hcc">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="iUU-t5-bkk">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKu-N7-E5Z">
+                                <rect key="frame" x="330.66666666666669" y="57" width="54.333333333333314" height="37.666666666666657"/>
+                                <color key="tintColor" red="0.3058823645" green="0.37254902719999999" blue="0.4588235021" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="xmark.circle.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20" scale="large"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="closeButtonAction:" destination="123-r8-ahs" eventType="touchUpInside" id="Hwc-sU-w73"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="uZR-Na-MVu"/>
+                        <color key="backgroundColor" red="0.014351890419999999" green="0.1447237432" blue="0.25621336700000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="uZR-Na-MVu" firstAttribute="trailing" secondItem="eKu-N7-E5Z" secondAttribute="trailing" constant="5" id="CwE-BU-DLH"/>
+                            <constraint firstItem="uZR-Na-MVu" firstAttribute="trailing" secondItem="m3H-kU-sdd" secondAttribute="trailing" constant="16" id="Oao-BZ-IuU"/>
+                            <constraint firstItem="uZR-Na-MVu" firstAttribute="bottom" secondItem="m3H-kU-sdd" secondAttribute="bottom" id="UQf-vz-yDz"/>
+                            <constraint firstItem="m3H-kU-sdd" firstAttribute="leading" secondItem="uZR-Na-MVu" secondAttribute="leading" constant="16" id="ZIP-x8-Y99"/>
+                            <constraint firstItem="m3H-kU-sdd" firstAttribute="top" secondItem="uZR-Na-MVu" secondAttribute="top" constant="60" id="q7j-Kh-4di"/>
+                            <constraint firstItem="eKu-N7-E5Z" firstAttribute="top" secondItem="uZR-Na-MVu" secondAttribute="top" constant="13" id="t5V-un-3IH"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="m3H-kU-sdd" id="EyM-Ql-XPK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qbK-zy-r8j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1860" y="1543.3649289099526"/>
         </scene>
         <!--Trailer View Controller-->
         <scene sceneID="k64-R1-jMs">
@@ -374,5 +453,6 @@
         <image name="list.star" catalog="system" width="128" height="94"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="star" catalog="system" width="128" height="116"/>
+        <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
     </resources>
 </document>
