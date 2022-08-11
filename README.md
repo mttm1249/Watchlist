@@ -7,7 +7,7 @@
 <img src="https://user-images.githubusercontent.com/87662841/183619228-9d6bde51-90bd-4e1b-92e1-977cfe34a3aa.PNG" width="230" height="500"> 
 
 ### Detail info and trailer of chosen movie 
-<img src="https://user-images.githubusercontent.com/87662841/183618930-bdce0d03-d39e-4e81-b5af-17c15b0b4cab.PNG" width="230" height="500"> <img src="https://user-images.githubusercontent.com/87662841/183618479-3668a51a-f3bf-4a73-a841-9093dd10f69c.PNG" width="230" height="500"> 
+<img src="https://user-images.githubusercontent.com/87662841/184191248-5a993c11-ca5c-4920-8f19-f5c62261e746.PNG" width="230" height="500"> <img src="https://user-images.githubusercontent.com/87662841/184191268-ef13de38-4f88-4e8e-93b7-7aefc3e2c386.PNG" width="230" height="500"> <img src="https://user-images.githubusercontent.com/87662841/183618479-3668a51a-f3bf-4a73-a841-9093dd10f69c.PNG" width="230" height="500"> 
 
 ### You can add movies in watchlist
 <img src="https://user-images.githubusercontent.com/87662841/183618268-fc03e48e-e668-422e-acec-ab1425ac2c69.PNG" width="230" height="500"> 
@@ -21,5 +21,3 @@
 5. Install on iPhone with iOS 15.5+
 
 #### Stack: Swift, UIKit, CoreData, URLSession, CocoaPods (Kingfisher, youtube_ios_player_helper)
-
-
