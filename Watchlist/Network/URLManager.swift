@@ -11,9 +11,12 @@ class URLManager {
     
     // URL
     var baseURL = "https://api.themoviedb.org"
+   
+    // Path
     var searchPath = "/3/search/movie"
     var trendingPath = "/3/trending/movie/week"
     
+    // Parametres
     var params: [URLQueryItem] {
         [
             .init(name: "query", value: query),
@@ -24,7 +27,6 @@ class URLManager {
     // Parametres values
     var query = ""
     var page = ""
-    var movieID = ""
     
     func getTrailerPath(from movieID: Int) -> String {
        let path = "/3/movie/\(movieID))/videos"
@@ -33,6 +35,11 @@ class URLManager {
     
     func getCastPath(from movieID: Int) -> String {
         let path = "/3/movie/\(movieID))/credits"
+        return path
+    }
+    
+    func getDetailsPath(from movieID: Int) -> String {
+        let path = "/3/movie/\(movieID)"
         return path
     }
     

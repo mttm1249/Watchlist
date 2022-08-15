@@ -11,15 +11,18 @@ import CoreData
 class DetailsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     var currentMovie = MovieModel()
-        
+    
     private let shared = URLManager.shared
     private var castPersons: [PersonModel] = []
+    private var genresArray: [String] = []
+    private var companiesArray: [String] = []
     private var moviesInWatchlist: [Movie] = []
     private var savedMoviesID: [Int] = []
     private var equalResult: Bool?
     private let feedbackGenerator = UIImpactFeedbackGenerator(style: .heavy)
     
-    @IBOutlet weak var movieTitleLabel: UILabel!
+    @IBOutlet weak var companyLabel: UILabel!
+    @IBOutlet weak var genresLabel: UILabel!
     @IBOutlet weak var moviePoster: UIImageView!
     @IBOutlet weak var overviewText: UITextView!
     @IBOutlet weak var watchlistButton: UIButton!
@@ -39,6 +42,7 @@ class DetailsViewController: UIViewController, UICollectionViewDelegate, UIColle
         overviewText.text = currentMovie.overview
         loadImage()
         fetchFromCoreData()
+        fetchDetails()
         checkAlreadySavedMovie()
     }
     
@@ -52,7 +56,6 @@ class DetailsViewController: UIViewController, UICollectionViewDelegate, UIColle
             let allActorsCVC = segue.destination as! AllActorsCollectionViewController
             allActorsCVC.currentMovieID = currentMovie.id
         }
-        
     }
     
     private func loadImage() {
@@ -94,6 +97,7 @@ class DetailsViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
     }
     
+
     //     MARK: Load data from JSON
     private func fetchCastPersons() {
         NetworkManager.shared.loadJson(urlString: shared.baseURL,
@@ -118,6 +122,36 @@ class DetailsViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
     }
     
+    // Load details
+    private func fetchDetails() {
+        NetworkManager.shared.loadJson(urlString: shared.baseURL,
+                                       path: shared.getDetailsPath(from: currentMovie.id!),
+                                       params: shared.params)
+        {
+            [weak self] (result: Result<Details, Error>) in
+            switch result {
+            case .success(let data):
+                
+                let genres = data.genres
+                for genre in genres {
+                    self?.genresArray.append(genre.name)
+                }
+
+                let companies = data.productionCompanies
+                for company in companies {
+                    self?.companiesArray.append(company.name)
+                }
+                
+                self?.companyLabel.text = self?.companiesArray.joined(separator: ", ")
+                self?.genresLabel.text = self?.genresArray.joined(separator: ", ")
+                
+            case .failure(let error):
+                print("WE GOT ERROR: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    
     // Fetch
     private func fetchFromCoreData() {
         let context = AppDelegate.getContext()
@@ -128,7 +162,7 @@ class DetailsViewController: UIViewController, UICollectionViewDelegate, UIColle
             print(error.localizedDescription)
         }
     }
-    
+        
     // Check equal result
     private func checkAlreadySavedMovie() {
         for movie in moviesInWatchlist {
