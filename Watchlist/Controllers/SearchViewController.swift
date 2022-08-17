@@ -102,14 +102,14 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if searchingHistoryIsActive == false {
-            performSegue(withIdentifier: "showDetails", sender: nil)
-        } else {
+        if searchingHistoryIsActive {
             let searchRequestText = searchingRequestsArray[indexPath.row]
             searchBar.text = searchRequestText
             searchBarSearchButtonClicked(searchBar)
             searchingHistoryIsActive = false
             tableView.reloadData()
+        } else {
+            performSegue(withIdentifier: "showDetails", sender: nil)
         }
     }
     
