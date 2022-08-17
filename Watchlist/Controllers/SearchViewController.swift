@@ -103,7 +103,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if searchingHistoryIsActive {
-            let searchRequestText = searchingRequestsArray[indexPath.row]
+            let searchRequestText = searchingRequestsArray.reversed()[indexPath.row]
             searchBar.text = searchRequestText
             searchBarSearchButtonClicked(searchBar)
             searchingHistoryIsActive = false
@@ -125,15 +125,18 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        if searchBar.text != nil && searchingHistoryIsActive == false {
-            movies.removeAll()
-            URLManager.shared.query = searchBar.text!
-            tabBarController?.navigationItem.title = "\(searchBar.text!):"
-            searchBar.resignFirstResponder()
-            if searchingHistoryIsActive == false {
-                searchingRequestsArray.append(searchBar.text!)
-            }
+        if searchBar.text != nil {
+            search()
+            searchingHistoryIsActive = false
+            searchingRequestsArray.append(searchBar.text!)
         }
+    }
+    
+    private func search() {
+        tabBarController?.navigationItem.title = "\(searchBar.text!):"
+        movies.removeAll()
+        URLManager.shared.query = searchBar.text!
+        searchBar.resignFirstResponder()
         fetch()
     }
     
@@ -160,20 +163,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 URLManager.shared.page = String(page)
                 fetch()
             }
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        if searchingHistoryIsActive {
-            return true
-        }
-        return false
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            searchingRequestsArray.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .left)
         }
     }
     
