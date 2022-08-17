@@ -10,9 +10,12 @@ import Kingfisher
 
 class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchControllerDelegate, UISearchBarDelegate {
     
-    private var movies = [MovieModel]()
     private let searchController = UISearchController(searchResultsController: nil)
+    private var movies = [MovieModel]()
     private var page = 1
+    
+    private var searchingRequestsArray: [String] = []
+    private var searchingHistoryIsActive = false
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -67,24 +70,47 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // Register custom cell
     private func registerTableViewCells() {
-        let textFieldCell = UINib(nibName: "MovieCell", bundle: nil)
-        self.tableView.register(textFieldCell,forCellReuseIdentifier: "customCell")
+        let searchTextCell = UINib(nibName: "HistoryTextCell", bundle: nil)
+        self.tableView.register(searchTextCell,forCellReuseIdentifier: "historyTextCell")
+        
+        let movieCell = UINib(nibName: "MovieCell", bundle: nil)
+        self.tableView.register(movieCell,forCellReuseIdentifier: "customCell")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movies.count
+        if searchingHistoryIsActive == true {
+            return searchingRequestsArray.count
+        } else {
+            return movies.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as? CustomTableViewCell {
-            cell.setup(model: movies[indexPath.row])
-            return cell
+        if searchingHistoryIsActive == true {
+            if let searchTextCell = tableView.dequeueReusableCell(withIdentifier: "historyTextCell", for: indexPath) as? HistoryTextCell {
+                searchTextCell.searchTextLabel.text = searchingRequestsArray[indexPath.row]
+                searchTextCell.iconLabel.text = "⇠"
+                return searchTextCell
+            }
+        } else {
+            if let movieCell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as? CustomTableViewCell {
+                movieCell.setup(model: movies[indexPath.row])
+                return movieCell
+            }
         }
         return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showDetails", sender: nil)
+        if searchingHistoryIsActive == false {
+            performSegue(withIdentifier: "showDetails", sender: nil)
+        } else {
+            let searchRequestText = searchingRequestsArray[indexPath.row]
+            searchBar.text = searchRequestText
+            searchBarSearchButtonClicked(searchBar)
+            searchingHistoryIsActive = false
+            tableView.reloadData()
+        }
     }
     
     //     MARK: Pass data to DetailsViewController
@@ -99,13 +125,21 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        if searchBar.text != nil {
+        if searchBar.text != nil && searchingHistoryIsActive == false {
             movies.removeAll()
             URLManager.shared.query = searchBar.text!
             tabBarController?.navigationItem.title = "\(searchBar.text!):"
             searchBar.resignFirstResponder()
+            if searchingHistoryIsActive == false {
+                searchingRequestsArray.append(searchBar.text!)
+            }
         }
         fetch()
+    }
+    
+    func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
+        searchingHistoryIsActive.toggle()
+        tableView.reloadData()
     }
     
     // Portion data loading
@@ -117,13 +151,29 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             spinner.startAnimating()
             spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: tableView.bounds.width, height: CGFloat(44))
             
-            self.tableView.tableFooterView = spinner
-            self.tableView.tableFooterView?.isHidden = false
-            self.upButton.isEnabled = true
-
-            page += 1
-            URLManager.shared.page = String(page)
-            fetch()
+            if searchingHistoryIsActive == false {
+                self.tableView.tableFooterView = spinner
+                self.tableView.tableFooterView?.isHidden = false
+                self.upButton.isEnabled = true
+                
+                page += 1
+                URLManager.shared.page = String(page)
+                fetch()
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if searchingHistoryIsActive {
+            return true
+        }
+        return false
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            searchingRequestsArray.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .left)
         }
     }
     
