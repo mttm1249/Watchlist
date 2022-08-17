@@ -88,7 +88,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if searchingHistoryIsActive == true {
             if let searchTextCell = tableView.dequeueReusableCell(withIdentifier: "historyTextCell", for: indexPath) as? HistoryTextCell {
-                searchTextCell.searchTextLabel.text = searchingRequestsArray[indexPath.row]
+                searchTextCell.searchTextLabel.text = searchingRequestsArray.reversed()[indexPath.row]
                 searchTextCell.iconLabel.text = "⇠"
                 return searchTextCell
             }
