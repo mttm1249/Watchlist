@@ -43,6 +43,7 @@
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.014351890419999999" green="0.1447237432" blue="0.25621336700000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="iconLabel" destination="CJu-Ch-YkN" id="5wr-i0-u1t"/>
                 <outlet property="searchTextLabel" destination="RRx-CH-2Yp" id="Y0W-WB-Rrr"/>

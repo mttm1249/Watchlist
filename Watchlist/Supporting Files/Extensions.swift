@@ -46,3 +46,13 @@ extension SearchViewController {
         tableView.scrollToRow(at: topRow, at: .top, animated: true)
     }
 }
+
+// MARK: - UserDefaults
+extension UserDefaults {
+    func appendToHistoryArray(by string: String) {
+        let userDefaults = UserDefaults.standard
+        var strings: [String] = userDefaults.stringArray(forKey: "history") ?? []
+        strings.append(string)
+        userDefaults.set(strings, forKey: "history")
+    }
+}

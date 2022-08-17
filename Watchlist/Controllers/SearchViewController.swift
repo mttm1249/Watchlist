@@ -10,6 +10,7 @@ import Kingfisher
 
 class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchControllerDelegate, UISearchBarDelegate {
     
+    private let userDefaults = UserDefaults.standard
     private let searchController = UISearchController(searchResultsController: nil)
     private var movies = [MovieModel]()
     private var page = 1
@@ -32,9 +33,23 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         hideKeyboardWhenTappedAround()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadHistory()
+    }
+    
     @IBAction func upButtonAction(_ sender: Any) {
         scrollToTop()
         upButton.isEnabled = false
+    }
+    
+    private func loadHistory() {
+        if let loadedStrings = UserDefaults.standard.stringArray(forKey: "history") {
+            if loadedStrings.count >= 10 {
+                userDefaults.removeObject(forKey: "history")
+            }
+            searchingRequestsArray = loadedStrings
+        }
     }
     
     //     MARK: Load data from JSON
@@ -128,7 +143,9 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if searchBar.text != nil {
             search()
             searchingHistoryIsActive = false
-            searchingRequestsArray.append(searchBar.text!)
+            if let text = searchBar.text {
+                userDefaults.appendToHistoryArray(by: text)
+            }
         }
     }
     
@@ -141,6 +158,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
+        loadHistory()
         searchingHistoryIsActive.toggle()
         tableView.reloadData()
     }

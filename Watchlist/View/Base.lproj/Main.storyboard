@@ -177,7 +177,7 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Company label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aHm-mb-ypj">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="17"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -287,26 +287,36 @@
                                     <constraint firstAttribute="height" constant="31" id="e3Q-A8-JPz"/>
                                 </constraints>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="82T-UT-w0a" userLabel="separator">
+                                <rect key="frame" x="35" y="359" width="320" height="1"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="3MK-2h-Pv7"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pUy-NK-ESd"/>
                         <color key="backgroundColor" red="0.014351890419999999" green="0.1447237432" blue="0.25621336700000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="QWj-ib-o3i" firstAttribute="top" secondItem="FgS-Ym-FuD" secondAttribute="bottom" constant="6.3333333333333712" id="3pP-Zi-TIm"/>
                             <constraint firstItem="Plt-eC-za6" firstAttribute="leading" secondItem="pUy-NK-ESd" secondAttribute="leading" constant="35" id="4z6-yE-HzS"/>
+                            <constraint firstItem="82T-UT-w0a" firstAttribute="top" secondItem="FgS-Ym-FuD" secondAttribute="bottom" constant="2.3333333333333144" id="B4X-Ie-Qla"/>
                             <constraint firstItem="pUy-NK-ESd" firstAttribute="trailing" secondItem="AA1-r3-bgZ" secondAttribute="trailing" constant="112" id="K5b-AG-CV4"/>
                             <constraint firstItem="pUy-NK-ESd" firstAttribute="trailing" secondItem="zoZ-B0-urg" secondAttribute="trailing" constant="20" id="Ome-op-LPA"/>
                             <constraint firstItem="zoZ-B0-urg" firstAttribute="top" secondItem="Plt-eC-za6" secondAttribute="bottom" constant="21" id="StL-V7-GiD"/>
+                            <constraint firstItem="QWj-ib-o3i" firstAttribute="top" secondItem="82T-UT-w0a" secondAttribute="bottom" constant="3" id="T3o-Vu-WnC"/>
                             <constraint firstItem="FgS-Ym-FuD" firstAttribute="top" secondItem="AA1-r3-bgZ" secondAttribute="bottom" constant="7.6666666666666288" id="csc-Fz-pbo"/>
                             <constraint firstItem="pUy-NK-ESd" firstAttribute="bottom" secondItem="zoZ-B0-urg" secondAttribute="bottom" constant="50" id="e46-Qd-G9Q"/>
                             <constraint firstItem="pUy-NK-ESd" firstAttribute="trailing" secondItem="FgS-Ym-FuD" secondAttribute="trailing" constant="35" id="ewl-99-2E8"/>
                             <constraint firstItem="FgS-Ym-FuD" firstAttribute="leading" secondItem="pUy-NK-ESd" secondAttribute="leading" constant="35" id="g2E-r2-ngM"/>
                             <constraint firstItem="AA1-r3-bgZ" firstAttribute="leading" secondItem="pUy-NK-ESd" secondAttribute="leading" constant="113" id="lUT-5W-Vx2"/>
                             <constraint firstItem="pUy-NK-ESd" firstAttribute="trailing" secondItem="QWj-ib-o3i" secondAttribute="trailing" constant="35" id="nuG-y6-Mjb"/>
+                            <constraint firstItem="pUy-NK-ESd" firstAttribute="trailing" secondItem="82T-UT-w0a" secondAttribute="trailing" constant="35" id="pAu-ac-jZ7"/>
                             <constraint firstItem="AA1-r3-bgZ" firstAttribute="top" secondItem="pUy-NK-ESd" secondAttribute="top" id="pKf-65-yCl"/>
                             <constraint firstItem="zoZ-B0-urg" firstAttribute="leading" secondItem="pUy-NK-ESd" secondAttribute="leading" constant="20" id="tIm-aw-K5O"/>
                             <constraint firstItem="QWj-ib-o3i" firstAttribute="leading" secondItem="pUy-NK-ESd" secondAttribute="leading" constant="35" id="tVv-m7-AXq"/>
                             <constraint firstItem="pUy-NK-ESd" firstAttribute="trailing" secondItem="Plt-eC-za6" secondAttribute="trailing" constant="35" id="uaC-YV-2Ni"/>
                             <constraint firstItem="Plt-eC-za6" firstAttribute="top" secondItem="QWj-ib-o3i" secondAttribute="bottom" constant="8.3333333333333712" id="xCb-st-Vuc"/>
+                            <constraint firstItem="82T-UT-w0a" firstAttribute="leading" secondItem="pUy-NK-ESd" secondAttribute="leading" constant="35" id="xCp-VI-vA3"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="sTk-rm-OpU"/>

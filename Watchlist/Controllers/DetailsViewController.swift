@@ -32,6 +32,7 @@ class DetailsViewController: UIViewController, UICollectionViewDelegate, UIColle
         super.viewDidLoad()
         registerCustomCell()
         fetchCastPersons()
+        fetchDetails()
         castCollectionView.delegate = self
         castCollectionView.dataSource = self
     }
@@ -42,7 +43,6 @@ class DetailsViewController: UIViewController, UICollectionViewDelegate, UIColle
         overviewText.text = currentMovie.overview
         loadImage()
         fetchFromCoreData()
-        fetchDetails()
         checkAlreadySavedMovie()
     }
     
