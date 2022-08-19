@@ -43,7 +43,7 @@ class TrendingTableViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as? CustomTableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as? MovieCell {
             cell.setup(model: movies[indexPath.row])
             return cell
         }
@@ -53,25 +53,7 @@ class TrendingTableViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "showDetails", sender: nil)
     }
-    
-    // Portion data loading
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let lastSectionIndex = tableView.numberOfSections - 1
-        let lastRowIndex = tableView.numberOfRows(inSection: lastSectionIndex) - 1
-        if indexPath.section ==  lastSectionIndex && indexPath.row == lastRowIndex {
-            let spinner = UIActivityIndicatorView(style: .medium)
-            spinner.startAnimating()
-            spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: tableView.bounds.width, height: CGFloat(44))
-            
-            self.tableView.tableFooterView = spinner
-            self.tableView.tableFooterView?.isHidden = false
-            
-            page += 1
-            URLManager.shared.page = String(page)
-            fetch()
-        }
-    }
-    
+        
     //     MARK: Load data from JSON
     private func fetch() {
         URLManager.shared.page = "1"
@@ -82,7 +64,6 @@ class TrendingTableViewController: UIViewController, UITableViewDelegate, UITabl
             [weak self] (result: Result<Trending, Error>) in
             switch result {
             case .success(let data):
-                
                 let results = data.results
                 for movie in results {
                     let movieModel = MovieModel(originalTitle: movie.originalTitle,

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomCollectionViewCell: UICollectionViewCell {
+class PersonCell: UICollectionViewCell {
     
     @IBOutlet weak var personImage: UIImageView!
     @IBOutlet weak var personName: UILabel!

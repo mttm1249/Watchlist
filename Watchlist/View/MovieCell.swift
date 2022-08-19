@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomTableViewCell: UITableViewCell {
+class MovieCell: UITableViewCell {
     
     @IBOutlet weak var movieImage: UIImageView!
     @IBOutlet weak var movieNameLabel: UILabel!

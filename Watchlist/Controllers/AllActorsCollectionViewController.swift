@@ -61,15 +61,14 @@ class AllActorsCollectionViewController: UIViewController, UISheetPresentationCo
         }
     }
     
-    // MARK: UICollectionViewDataSource
-
+    // MARK: UICollectionView DataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return castPersons.count
 
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "personCell", for: indexPath) as? CustomCollectionViewCell {
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "personCell", for: indexPath) as? PersonCell {
             cell.setup(model: castPersons[indexPath.row])
             return cell
         }

@@ -56,3 +56,30 @@ extension UserDefaults {
         userDefaults.set(strings, forKey: "history")
     }
 }
+
+// MARK: - UITableView - Animation
+extension UITableView {
+    func reloadWithAnimation() {
+        self.reloadData()
+        let tableViewHeight = self.bounds.size.height
+        let cells = self.visibleCells
+        var delayCounter = 0
+        for cell in cells {
+            cell.transform = CGAffineTransform(translationX: 0, y: -tableViewHeight)
+        }
+        for cell in cells {
+            UIView.animate(withDuration: 0.4, delay: 0.03 * Double(delayCounter),usingSpringWithDamping: 5.0, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+                cell.transform = CGAffineTransform.identity
+            }, completion: nil)
+            delayCounter += 1
+        }
+    }
+}
+
+extension UIImage {
+    func imageResized(to size: CGSize) -> UIImage {
+        return UIGraphicsImageRenderer(size: size).image { _ in
+            draw(in: CGRect(origin: .zero, size: size))
+        }
+    }
+}

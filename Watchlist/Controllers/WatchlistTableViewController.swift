@@ -62,7 +62,7 @@ class WatchlistTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as? CustomTableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as? MovieCell {
             cell.setup(model: movies[indexPath.row])
             return cell
         }

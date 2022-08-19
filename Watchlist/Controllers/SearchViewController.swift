@@ -45,7 +45,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     private func loadHistory() {
         if let loadedStrings = UserDefaults.standard.stringArray(forKey: "history") {
-            if loadedStrings.count >= 10 {
+            if loadedStrings.count >= 13 {
                 userDefaults.removeObject(forKey: "history")
             }
             searchingRequestsArray = loadedStrings
@@ -92,6 +92,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.tableView.register(movieCell,forCellReuseIdentifier: "customCell")
     }
     
+    //     MARK: UITableView DataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchingHistoryIsActive == true {
             return searchingRequestsArray.count
@@ -104,11 +105,11 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if searchingHistoryIsActive == true {
             if let searchTextCell = tableView.dequeueReusableCell(withIdentifier: "historyTextCell", for: indexPath) as? HistoryTextCell {
                 searchTextCell.searchTextLabel.text = searchingRequestsArray.reversed()[indexPath.row]
-                searchTextCell.iconLabel.text = "⇠"
+                searchTextCell.setupIcon()
                 return searchTextCell
             }
         } else {
-            if let movieCell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as? CustomTableViewCell {
+            if let movieCell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as? MovieCell {
                 movieCell.setup(model: movies[indexPath.row])
                 return movieCell
             }
@@ -142,25 +143,29 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if searchBar.text != nil {
             search()
+            fetch()
             searchingHistoryIsActive = false
             if let text = searchBar.text {
                 userDefaults.appendToHistoryArray(by: text)
             }
         }
+        searchBar.resignFirstResponder()
     }
     
     private func search() {
         tabBarController?.navigationItem.title = "\(searchBar.text!):"
         movies.removeAll()
         URLManager.shared.query = searchBar.text!
-        searchBar.resignFirstResponder()
-        fetch()
     }
     
     func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
         loadHistory()
         searchingHistoryIsActive.toggle()
-        tableView.reloadData()
+        if searchingHistoryIsActive {
+            tableView.reloadWithAnimation()
+        } else {
+            tableView.reloadData()
+        }
     }
     
     // Portion data loading
