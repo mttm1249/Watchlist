@@ -92,10 +92,25 @@ class WatchlistTableViewController: UITableViewController {
         return true
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            deleteCell(tableView, at: indexPath)
+//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//
+//            deleteCell(tableView, at: indexPath)
+//
+//        }
+//    }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let action = UIContextualAction(style: .normal, title: "Remove") { (action, view, completion) in
+            let indexesToRedraw = [indexPath]
+            self.deleteCell(tableView, at: indexPath)
+            tableView.reloadData()
         }
+        action.backgroundColor = .systemRed
+        let config = UISwipeActionsConfiguration(actions: [action])
+        config.performsFirstActionWithFullSwipe = true
+        return config
+    }
     }
     
-}
+

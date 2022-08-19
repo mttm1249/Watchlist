@@ -137,14 +137,46 @@
 			children = (
 				DAA4AF7D2897E75C00B1B8F9 /* Main.storyboard */,
 				DAA4AF852897E75D00B1B8F9 /* LaunchScreen.storyboard */,
-				DA68F14C289A79EC00E4A209 /* MovieCell.xib */,
-				DA98210928A249400083802E /* PersonCell.xib */,
-				DA6B66A228AD105700A5EAC8 /* HistoryTextCell.xib */,
-				DA68F14E289A7B2500E4A209 /* MovieCell.swift */,
-				DA98210B28A24A030083802E /* PersonCell.swift */,
-				DA6B66A428AD108500A5EAC8 /* HistoryTextCell.swift */,
+				DAA0311B28AFA83300733AA1 /* Cells */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		DAA0311B28AFA83300733AA1 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				DAA0311C28AFA84400733AA1 /* MovieCell */,
+				DAA0311D28AFA85600733AA1 /* PersonCell */,
+				DAA0311E28AFA86200733AA1 /* HistoryCell */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		DAA0311C28AFA84400733AA1 /* MovieCell */ = {
+			isa = PBXGroup;
+			children = (
+				DA68F14C289A79EC00E4A209 /* MovieCell.xib */,
+				DA68F14E289A7B2500E4A209 /* MovieCell.swift */,
+			);
+			path = MovieCell;
+			sourceTree = "<group>";
+		};
+		DAA0311D28AFA85600733AA1 /* PersonCell */ = {
+			isa = PBXGroup;
+			children = (
+				DA98210928A249400083802E /* PersonCell.xib */,
+				DA98210B28A24A030083802E /* PersonCell.swift */,
+			);
+			path = PersonCell;
+			sourceTree = "<group>";
+		};
+		DAA0311E28AFA86200733AA1 /* HistoryCell */ = {
+			isa = PBXGroup;
+			children = (
+				DA6B66A228AD105700A5EAC8 /* HistoryTextCell.xib */,
+				DA6B66A428AD108500A5EAC8 /* HistoryTextCell.swift */,
+			);
+			path = HistoryCell;
 			sourceTree = "<group>";
 		};
 		DAA4AF6B2897E75C00B1B8F9 = {
