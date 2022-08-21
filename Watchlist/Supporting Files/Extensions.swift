@@ -7,6 +7,8 @@
 
 import UIKit
 
+let feedbackGenerator = UIImpactFeedbackGenerator(style: .heavy)
+
 // MARK: - Images activity indicator
 extension UIImageView {
     func loadingIndicator() {

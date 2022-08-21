@@ -74,6 +74,10 @@ class AllActorsCollectionViewController: UIViewController, UISheetPresentationCo
         }
         return UICollectionViewCell()
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 90, height: 160)
+    }
  
     @IBAction func closeButtonAction(_ sender: Any) {
         dismiss(animated: true)

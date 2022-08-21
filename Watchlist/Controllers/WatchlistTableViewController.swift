@@ -9,10 +9,10 @@ import UIKit
 import CoreData
 
 class WatchlistTableViewController: UITableViewController {
-
+    
     private var watchlist: [Movie] = []
     private var movies = [MovieModel]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         registerTableViewCells()
@@ -37,20 +37,56 @@ class WatchlistTableViewController: UITableViewController {
             watchlist = try context.fetch(fetchRequest)
             
             for movie in watchlist {
-                let movieModel = MovieModel(originalTitle: movie.originalTitle,
+                let movieModel = MovieModel(title: movie.title,
                                             overview: movie.overview,
                                             posterPath: movie.posterPath,
                                             releaseDate: movie.releaseDate,
-                                            voteAverage: movie.voteAverage)
+                                            voteAverage: movie.voteAverage,
+                                            viewed: movie.viewed)
                 self.movies.append(movieModel)
             }
         } catch let error as NSError {
             print(error.localizedDescription)
         }
     }
+        
+    // Save status of view
+    private func saveStatus(_ tableView: UITableView, at indexPath: IndexPath) {
+        let context = AppDelegate.getContext()
+        let fetchRequest: NSFetchRequest<Movie> = Movie.fetchRequest()
+        
+        if let movies = try? context.fetch(fetchRequest) {
+            let movie = movies[indexPath.row]
+            movie.viewed.toggle()
+        }
+        do {
+            try context.save()
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+    }
+    
+    // Delete movie cell
+    private func deleteCell(_ tableView: UITableView, at indexPath: IndexPath) {
+        movies.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .left)
+        
+        let context = AppDelegate.getContext()
+        let fetchRequest: NSFetchRequest<Movie> = Movie.fetchRequest()
+        
+        if let movies = try? context.fetch(fetchRequest) {
+            let movie = movies[indexPath.row]
+            context.delete(movie)
+        }
+        do {
+            try context.save()
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+    }
     
     // MARK: - Table view data source
-
+    
     // Register custom cell
     private func registerTableViewCells() {
         let textFieldCell = UINib(nibName: "MovieCell", bundle: nil)
@@ -69,40 +105,21 @@ class WatchlistTableViewController: UITableViewController {
         return UITableViewCell()
     }
     
-    // Удаление записи
-    private func deleteCell(_ tableView: UITableView, at indexPath: IndexPath) {
-        movies.remove(at: indexPath.row)
-        tableView.deleteRows(at: [indexPath], with: .left)
-        
-        let context = AppDelegate.getContext()
-        let fetchRequest: NSFetchRequest<Movie> = Movie.fetchRequest()
-        
-        if let movies = try? context.fetch(fetchRequest) {
-            let movie = movies[indexPath.row]
-            context.delete(movie)
-        }
-        do {
-            try context.save()
-        } catch let error as NSError {
-            print(error.localizedDescription)
-        }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        feedbackGenerator.impactOccurred()
+        saveStatus(tableView, at: indexPath)
+        movies.removeAll()
+        fetchFromCoreData()
+        tableView.reloadData()
     }
-
+    
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
-//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//
-//            deleteCell(tableView, at: indexPath)
-//
-//        }
-//    }
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let action = UIContextualAction(style: .normal, title: "Remove") { (action, view, completion) in
-            let indexesToRedraw = [indexPath]
             self.deleteCell(tableView, at: indexPath)
             tableView.reloadData()
         }
@@ -111,6 +128,6 @@ class WatchlistTableViewController: UITableViewController {
         config.performsFirstActionWithFullSwipe = true
         return config
     }
-    }
-    
+}
+
 

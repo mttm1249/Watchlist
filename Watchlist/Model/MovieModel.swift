@@ -8,10 +8,11 @@
 import Foundation
 
 struct MovieModel {
-    var originalTitle: String?
+    var title: String?
     var overview: String?
     var posterPath: String?
     var releaseDate: String?
     var voteAverage: Double?
     var id: Int?
+    var viewed: Bool?
 }

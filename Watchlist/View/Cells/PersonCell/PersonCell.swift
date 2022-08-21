@@ -19,11 +19,15 @@ class PersonCell: UICollectionViewCell {
         characterName.text = model.character ?? defaultString
       
         // setup image
-        let imageString = model.profilePath ?? defaultString
-        let urlPath = "https://www.themoviedb.org/t/p/w276_and_h350_face"
-        let url = URL(string: urlPath + imageString)
-        personImage.loadingIndicator()
-        personImage.kf.setImage(with: url)
+        let imageString = model.profilePath
+        if imageString != nil {
+            let urlPath = "https://www.themoviedb.org/t/p/w276_and_h350_face"
+            let url = URL(string: urlPath + imageString!)
+            personImage.loadingIndicator()
+            personImage.kf.setImage(with: url)
+        } else {
+            personImage.image = #imageLiteral(resourceName: "blank-avatar")
+        }
     }
     
 }

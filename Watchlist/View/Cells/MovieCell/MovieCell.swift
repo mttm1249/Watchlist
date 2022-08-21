@@ -14,11 +14,20 @@ class MovieCell: UITableViewCell {
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
     @IBOutlet weak var movieVoteLabel: UILabel!
+    @IBOutlet weak var indicator: UIImageView!
     
     func setup(model: MovieModel) {
         let defaultString = ""
+        let eyeImage = (UIImage(systemName: "eye"))
+        let eyeImageSlash = (UIImage(systemName: "eye.slash"))
+    
+        if model.viewed == true {
+            indicator.image = eyeImage
+        } else {
+            indicator.image = eyeImageSlash
+        }
 
-        movieNameLabel.text = model.originalTitle ?? defaultString
+        movieNameLabel.text = model.title ?? defaultString
         overviewLabel.text = "Overview: \(model.overview ?? defaultString)"
         
         if model.voteAverage != nil {

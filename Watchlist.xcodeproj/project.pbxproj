@@ -126,8 +126,8 @@
 				DAA4AF7B2897E75C00B1B8F9 /* SearchViewController.swift */,
 				DA47F217289C1E65004C0C0A /* DetailsViewController.swift */,
 				DAFF3904289FE25B00BB83A2 /* TrailerViewController.swift */,
-				DACA9F0828A10D3400B52FC7 /* WatchlistTableViewController.swift */,
 				DAD742FD28A514E700A2BBC3 /* AllActorsCollectionViewController.swift */,
+				DACA9F0828A10D3400B52FC7 /* WatchlistTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";

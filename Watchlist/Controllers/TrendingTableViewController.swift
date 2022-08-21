@@ -45,6 +45,7 @@ class TrendingTableViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as? MovieCell {
             cell.setup(model: movies[indexPath.row])
+            cell.indicator.isHidden = true
             return cell
         }
         return UITableViewCell()
@@ -66,7 +67,7 @@ class TrendingTableViewController: UIViewController, UITableViewDelegate, UITabl
             case .success(let data):
                 let results = data.results
                 for movie in results {
-                    let movieModel = MovieModel(originalTitle: movie.originalTitle,
+                    let movieModel = MovieModel(title: movie.title,
                                                 overview: movie.overview,
                                                 posterPath: movie.posterPath,
                                                 releaseDate: movie.releaseDate,

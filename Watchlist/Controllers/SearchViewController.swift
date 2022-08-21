@@ -64,7 +64,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 
                 let results = data.results
                 for movie in results {
-                    let movieModel = MovieModel(originalTitle: movie.originalTitle,
+                    let movieModel = MovieModel(title: movie.title,
                                                 overview: movie.overview,
                                                 posterPath: movie.posterPath,
                                                 releaseDate: movie.releaseDate,
@@ -111,6 +111,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         } else {
             if let movieCell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as? MovieCell {
                 movieCell.setup(model: movies[indexPath.row])
+                movieCell.indicator.isHidden = true
                 return movieCell
             }
         }

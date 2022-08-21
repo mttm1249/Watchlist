@@ -19,7 +19,6 @@ class DetailsViewController: UIViewController, UICollectionViewDelegate, UIColle
     private var moviesInWatchlist: [Movie] = []
     private var savedMoviesID: [Int] = []
     private var equalResult: Bool?
-    private let feedbackGenerator = UIImpactFeedbackGenerator(style: .heavy)
     
     @IBOutlet weak var companyLabel: UILabel!
     @IBOutlet weak var genresLabel: UILabel!
@@ -39,7 +38,7 @@ class DetailsViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.title = currentMovie.originalTitle
+        navigationItem.title = currentMovie.title
         overviewText.text = currentMovie.overview
         loadImage()
         fetchFromCoreData()
@@ -84,7 +83,7 @@ class DetailsViewController: UIViewController, UICollectionViewDelegate, UIColle
         let context = AppDelegate.getContext()
         let newEntry = NSEntityDescription.insertNewObject(forEntityName: "Movie", into: context)
         newEntry.setValue(movie.id, forKey: "id")
-        newEntry.setValue(movie.originalTitle, forKey: "originalTitle")
+        newEntry.setValue(movie.title, forKey: "title")
         newEntry.setValue(movie.overview, forKey: "overview")
         newEntry.setValue(movie.posterPath, forKey: "posterPath")
         newEntry.setValue(movie.releaseDate, forKey: "releaseDate")
@@ -200,6 +199,10 @@ class DetailsViewController: UIViewController, UICollectionViewDelegate, UIColle
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "footer", for: indexPath)
         return footerView
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 90, height: 160)
     }
         
     func registerCustomCell() {

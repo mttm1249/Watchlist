@@ -23,7 +23,7 @@ struct Search: Model {
 
 // MARK: - Result
 struct Results: Codable {
-    let originalTitle, overview: String
+    let title, overview: String
     let posterPath: String?
     let id: Int
     let releaseDate: String?
@@ -31,7 +31,7 @@ struct Results: Codable {
 
     enum CodingKeys: String, CodingKey {
 
-        case originalTitle = "original_title"
+        case title = "title"
         case overview
         case posterPath = "poster_path"
         case releaseDate = "release_date"
