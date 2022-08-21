@@ -11,7 +11,7 @@
 <img src="https://user-images.githubusercontent.com/87662841/185604665-05b2dc44-76d5-49f7-a37b-b0ee78a59453.PNG" width="230" height="500"> <img src="https://user-images.githubusercontent.com/87662841/185604682-58cebb11-698c-4b73-8fa2-7bbc3af4eb19.PNG" width="230" height="500"> <img src="https://user-images.githubusercontent.com/87662841/185604703-56b1c0ae-33da-4fcf-b4dc-eebcd9886a99.PNG" width="230" height="500"> 
 
 ### You can add movies in watchlist
-<img src="https://user-images.githubusercontent.com/87662841/183618268-fc03e48e-e668-422e-acec-ab1425ac2c69.PNG" width="230" height="500"> 
+<img src="https://user-images.githubusercontent.com/87662841/185784821-e4d2f63e-e3bf-4521-bacf-fa7fe3e3264b.jpeg" width="230" height="500"> 
 
 
 ## Installation: 
