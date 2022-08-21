@@ -189,9 +189,12 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QWj-ib-o3i">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QWj-ib-o3i">
                                 <rect key="frame" x="35" y="363" width="320" height="159.33333333333337"/>
                                 <color key="backgroundColor" red="0.014351890419999999" green="0.1447237432" blue="0.25621336700000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="159.33333333333337" id="oAp-Wg-ZD1"/>
+                                </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -315,7 +318,6 @@
                             <constraint firstItem="zoZ-B0-urg" firstAttribute="leading" secondItem="pUy-NK-ESd" secondAttribute="leading" constant="20" id="tIm-aw-K5O"/>
                             <constraint firstItem="QWj-ib-o3i" firstAttribute="leading" secondItem="pUy-NK-ESd" secondAttribute="leading" constant="35" id="tVv-m7-AXq"/>
                             <constraint firstItem="pUy-NK-ESd" firstAttribute="trailing" secondItem="Plt-eC-za6" secondAttribute="trailing" constant="35" id="uaC-YV-2Ni"/>
-                            <constraint firstItem="Plt-eC-za6" firstAttribute="top" secondItem="QWj-ib-o3i" secondAttribute="bottom" constant="8.3333333333333712" id="xCb-st-Vuc"/>
                             <constraint firstItem="82T-UT-w0a" firstAttribute="leading" secondItem="pUy-NK-ESd" secondAttribute="leading" constant="35" id="xCp-VI-vA3"/>
                         </constraints>
                     </view>
