@@ -46,6 +46,7 @@ class TrendingTableViewController: UIViewController, UITableViewDelegate, UITabl
         if let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as? MovieCell {
             cell.setup(model: movies[indexPath.row])
             cell.indicator.isHidden = true
+            cell.backgroundColor = #colorLiteral(red: 0.009907525033, green: 0.1478210092, blue: 0.2553791106, alpha: 1)
             return cell
         }
         return UITableViewCell()
@@ -53,6 +54,10 @@ class TrendingTableViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "showDetails", sender: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 181
     }
         
     //     MARK: Load data from JSON

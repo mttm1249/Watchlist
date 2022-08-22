@@ -106,7 +106,7 @@
                                     <segment title="Viewed"/>
                                     <segment title="Not viewed"/>
                                 </segments>
-                                <color key="selectedSegmentTintColor" red="0.59607845540000004" green="0.79607844350000001" blue="0.65882354970000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="selectedSegmentTintColor" red="0.61176472900000001" green="0.80000001190000003" blue="0.64705884459999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
                                     <action selector="segmentedControlAction:" destination="Wz5-Mz-FYv" eventType="valueChanged" id="urh-KR-nyd"/>
                                 </connections>

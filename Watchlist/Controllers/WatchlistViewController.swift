@@ -22,6 +22,8 @@ class WatchlistViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.darkGray],
+                                                for: .selected)
         registerTableViewCells()
     }
     
@@ -125,7 +127,6 @@ class WatchlistViewController: UIViewController, UITableViewDelegate, UITableVie
             for movie in movies {
                 if movie.id == selectedMovie.id! {
                     context.delete(movie)
-                    
                 }
             }
         }
@@ -158,6 +159,7 @@ class WatchlistViewController: UIViewController, UITableViewDelegate, UITableVie
             } else {
                 cell.setup(model: movies[indexPath.row])
             }
+            cell.backgroundColor = #colorLiteral(red: 0.07019228488, green: 0.1790097058, blue: 0.2869570553, alpha: 1)
             return cell
         }
         return UITableViewCell()
@@ -201,6 +203,10 @@ class WatchlistViewController: UIViewController, UITableViewDelegate, UITableVie
         let config = UISwipeActionsConfiguration(actions: [action])
         config.performsFirstActionWithFullSwipe = true
         return config
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 181
     }
     
 }

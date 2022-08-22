@@ -94,7 +94,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     //     MARK: UITableView DataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchingHistoryIsActive == true {
+        if searchingHistoryIsActive {
             return searchingRequestsArray.count
         } else {
             return movies.count
@@ -102,16 +102,18 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if searchingHistoryIsActive == true {
+        if searchingHistoryIsActive {
             if let searchTextCell = tableView.dequeueReusableCell(withIdentifier: "historyTextCell", for: indexPath) as? HistoryTextCell {
                 searchTextCell.searchTextLabel.text = searchingRequestsArray.reversed()[indexPath.row]
                 searchTextCell.setupIcon()
+                searchTextCell.backgroundColor = #colorLiteral(red: 0.1235060617, green: 0.2181218565, blue: 0.3138850033, alpha: 1)
                 return searchTextCell
             }
         } else {
             if let movieCell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as? MovieCell {
                 movieCell.setup(model: movies[indexPath.row])
                 movieCell.indicator.isHidden = true
+                movieCell.backgroundColor = #colorLiteral(red: 0.009907525033, green: 0.1478210092, blue: 0.2553791106, alpha: 1)
                 return movieCell
             }
         }
@@ -127,6 +129,14 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             tableView.reloadData()
         } else {
             performSegue(withIdentifier: "showDetails", sender: nil)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if searchingHistoryIsActive {
+            return 40
+        } else {
+            return 181
         }
     }
     

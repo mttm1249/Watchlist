@@ -29,7 +29,7 @@ class MovieCell: UITableViewCell {
         }
         
         movieNameLabel.text = model.title ?? defaultString
-        overviewLabel.text = "Overview: \(model.overview ?? defaultString)"
+        overviewLabel.text = model.overview ?? defaultString
         
         if model.voteAverage != nil {
             movieVoteLabel.text = "Rating: \(model.voteAverage!)"
