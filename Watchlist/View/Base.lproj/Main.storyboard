@@ -78,35 +78,61 @@
             <point key="canvasLocation" x="1860" y="114.45497630331754"/>
         </scene>
         <!--Watchlist-->
-        <scene sceneID="1AY-PF-h6g">
+        <scene sceneID="9pb-9f-wyB">
             <objects>
-                <tableViewController id="5k4-GL-nzx" customClass="WatchlistTableViewController" customModule="Watchlist" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="aSd-5L-hDd">
+                <viewController id="Wz5-Mz-FYv" customClass="WatchlistViewController" customModule="Watchlist" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="szk-lg-HpQ">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.014351890419999999" green="0.1447237432" blue="0.25621336700000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="sectionIndexBackgroundColor" red="0.014351890419999999" green="0.1447237432" blue="0.25621336700000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="xxx" id="0rh-xE-wyl">
-                                <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="43.666667938232422"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0rh-xE-wyl" id="iQD-UH-4Ql">
-                                    <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="0XE-dt-fzP">
+                                <rect key="frame" x="0.0" y="137" width="390" height="707"/>
                                 <color key="backgroundColor" red="0.014351890419999999" green="0.1447237432" blue="0.25621336700000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="5k4-GL-nzx" id="IaP-sO-O0k"/>
-                            <outlet property="delegate" destination="5k4-GL-nzx" id="J7b-PV-3XH"/>
-                        </connections>
-                    </tableView>
-                    <tabBarItem key="tabBarItem" title="Watchlist" image="list.star" catalog="system" id="DkI-WL-hxv"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="14y-V7-hyp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="TDi-mu-XQa">
+                                        <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TDi-mu-XQa" id="IqS-JE-Hx8">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="wtb-4S-cY8">
+                                <rect key="frame" x="10" y="98" width="370" height="32"/>
+                                <segments>
+                                    <segment title="All"/>
+                                    <segment title="Viewed"/>
+                                    <segment title="Not viewed"/>
+                                </segments>
+                                <color key="selectedSegmentTintColor" red="0.59607845540000004" green="0.79607844350000001" blue="0.65882354970000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <connections>
+                                    <action selector="segmentedControlAction:" destination="Wz5-Mz-FYv" eventType="valueChanged" id="urh-KR-nyd"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="T5z-xb-jA0"/>
+                        <color key="backgroundColor" red="0.014351890419999999" green="0.1447237432" blue="0.25621336700000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="0XE-dt-fzP" firstAttribute="trailing" secondItem="T5z-xb-jA0" secondAttribute="trailing" id="HmQ-bP-UNw"/>
+                            <constraint firstAttribute="bottom" secondItem="0XE-dt-fzP" secondAttribute="bottom" id="PpN-WF-GJo"/>
+                            <constraint firstItem="wtb-4S-cY8" firstAttribute="leading" secondItem="T5z-xb-jA0" secondAttribute="leading" constant="10" id="VS7-l0-yRZ"/>
+                            <constraint firstItem="T5z-xb-jA0" firstAttribute="trailing" secondItem="wtb-4S-cY8" secondAttribute="trailing" constant="10" id="b5C-Bn-2fo"/>
+                            <constraint firstItem="0XE-dt-fzP" firstAttribute="top" secondItem="wtb-4S-cY8" secondAttribute="bottom" constant="8" id="qMF-4l-LcK"/>
+                            <constraint firstItem="0XE-dt-fzP" firstAttribute="leading" secondItem="T5z-xb-jA0" secondAttribute="leading" id="xQ9-hX-VwF"/>
+                            <constraint firstItem="wtb-4S-cY8" firstAttribute="top" secondItem="T5z-xb-jA0" secondAttribute="top" constant="10" id="yGc-Wr-70q"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Watchlist" image="list.star" catalog="system" id="yKU-iZ-3sP"/>
+                    <connections>
+                        <outlet property="segmentedControl" destination="wtb-4S-cY8" id="kH1-7F-2hb"/>
+                        <outlet property="tableView" destination="0XE-dt-fzP" id="1zV-C9-86b"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Ks-Xv-WfE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2660" y="114"/>
+            <point key="canvasLocation" x="2660" y="113.74407582938387"/>
         </scene>
         <!--Trending -->
         <scene sceneID="2ra-oS-pJL">
@@ -470,7 +496,7 @@
                     <connections>
                         <segue destination="fpg-82-ISR" kind="relationship" relationship="viewControllers" id="dSX-i2-P1a"/>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="I8f-HF-fV7"/>
-                        <segue destination="5k4-GL-nzx" kind="relationship" relationship="viewControllers" id="KfC-un-Nrj"/>
+                        <segue destination="Wz5-Mz-FYv" kind="relationship" relationship="viewControllers" id="ssY-46-R0E"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pyB-iW-vAl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

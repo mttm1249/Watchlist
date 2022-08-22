@@ -31,7 +31,7 @@
 		DAA9A3B8289BFEA400F4785F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3B7289BFEA400F4785F /* Extensions.swift */; };
 		DAC930E7289E59F2009C10B0 /* Trending.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC930E6289E59F1009C10B0 /* Trending.swift */; };
 		DAC930E9289E5AAD009C10B0 /* TrendingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC930E8289E5AAD009C10B0 /* TrendingTableViewController.swift */; };
-		DACA9F0928A10D3400B52FC7 /* WatchlistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACA9F0828A10D3400B52FC7 /* WatchlistTableViewController.swift */; };
+		DACA9F0928A10D3400B52FC7 /* WatchlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACA9F0828A10D3400B52FC7 /* WatchlistViewController.swift */; };
 		DAD742FE28A514E700A2BBC3 /* AllActorsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD742FD28A514E700A2BBC3 /* AllActorsCollectionViewController.swift */; };
 		DAEF5CC7289CF01D007C3292 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF5CC6289CF01D007C3292 /* Search.swift */; };
 		DAFF3905289FE25B00BB83A2 /* TrailerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFF3904289FE25B00BB83A2 /* TrailerViewController.swift */; };
@@ -68,7 +68,7 @@
 		DAA9A3B7289BFEA400F4785F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		DAC930E6289E59F1009C10B0 /* Trending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trending.swift; sourceTree = "<group>"; };
 		DAC930E8289E5AAD009C10B0 /* TrendingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingTableViewController.swift; sourceTree = "<group>"; };
-		DACA9F0828A10D3400B52FC7 /* WatchlistTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistTableViewController.swift; sourceTree = "<group>"; };
+		DACA9F0828A10D3400B52FC7 /* WatchlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistViewController.swift; sourceTree = "<group>"; };
 		DAD742FD28A514E700A2BBC3 /* AllActorsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllActorsCollectionViewController.swift; sourceTree = "<group>"; };
 		DAEF5CC6289CF01D007C3292 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		DAFF3904289FE25B00BB83A2 /* TrailerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailerViewController.swift; sourceTree = "<group>"; };
@@ -127,7 +127,7 @@
 				DA47F217289C1E65004C0C0A /* DetailsViewController.swift */,
 				DAFF3904289FE25B00BB83A2 /* TrailerViewController.swift */,
 				DAD742FD28A514E700A2BBC3 /* AllActorsCollectionViewController.swift */,
-				DACA9F0828A10D3400B52FC7 /* WatchlistTableViewController.swift */,
+				DACA9F0828A10D3400B52FC7 /* WatchlistViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -356,7 +356,7 @@
 				DA247290289FF9C600E4F1D4 /* Trailer.swift in Sources */,
 				DA6B66A528AD108500A5EAC8 /* HistoryTextCell.swift in Sources */,
 				DAEF5CC7289CF01D007C3292 /* Search.swift in Sources */,
-				DACA9F0928A10D3400B52FC7 /* WatchlistTableViewController.swift in Sources */,
+				DACA9F0928A10D3400B52FC7 /* WatchlistViewController.swift in Sources */,
 				DA68F14F289A7B2500E4A209 /* MovieCell.swift in Sources */,
 				DA98210628A23E7E0083802E /* PersonModel.swift in Sources */,
 				DAA9A3B8289BFEA400F4785F /* Extensions.swift in Sources */,

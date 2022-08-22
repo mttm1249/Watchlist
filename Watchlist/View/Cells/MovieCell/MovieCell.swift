@@ -19,37 +19,43 @@ class MovieCell: UITableViewCell {
     func setup(model: MovieModel) {
         let defaultString = ""
         let eyeImage = (UIImage(systemName: "eye"))
-        let eyeImageSlash = (UIImage(systemName: "eye.slash"))
-    
+        let emptyMovieImage = (UIImage(systemName: "multiply"))
+        
         if model.viewed == true {
+            indicator.isHidden = false
             indicator.image = eyeImage
         } else {
-            indicator.image = eyeImageSlash
+            indicator.isHidden = true
         }
-
+        
         movieNameLabel.text = model.title ?? defaultString
         overviewLabel.text = "Overview: \(model.overview ?? defaultString)"
         
         if model.voteAverage != nil {
-            movieVoteLabel.text = "TMDB Rating: \(model.voteAverage!)"
+            movieVoteLabel.text = "Rating: \(model.voteAverage!)"
         }
         
         let dateString = model.releaseDate
-                            if dateString != nil {
-                                let dateFormatter = DateFormatter()
-                                dateFormatter.dateFormat = "yyyy-MM-dd"
-                                let date = dateFormatter.date(from:dateString!)
-                                let formattedDate = date?.getFormattedDate(format: "MMM d, yyyy")
-                                releaseDateLabel.text = "\(formattedDate ?? defaultString)"
-                            } else {
-                                releaseDateLabel.text = "Release date unknown"
-                            }
+        if dateString != nil {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let date = dateFormatter.date(from:dateString!)
+            let formattedDate = date?.getFormattedDate(format: "MMM d, yyyy")
+            releaseDateLabel.text = "\(formattedDate ?? defaultString)"
+        } else {
+            releaseDateLabel.text = "Release date unknown"
+        }
         // setup image
-        let imageString = model.posterPath ?? defaultString
-        let urlPath = "https://image.tmdb.org/t/p/w500"
-        let url = URL(string: urlPath + imageString)
-        movieImage.loadingIndicator()
-        movieImage.kf.setImage(with: url)
+        let imageString = model.posterPath
+        if imageString != nil {
+            let urlPath = "https://image.tmdb.org/t/p/w500"
+            let url = URL(string: urlPath + imageString!)
+            movieImage.loadingIndicator()
+            movieImage.kf.setImage(with: url)
+        } else {
+            movieImage.image = emptyMovieImage
+            movieImage.contentMode = .scaleAspectFit
+        }
     }
-        
+    
 }
