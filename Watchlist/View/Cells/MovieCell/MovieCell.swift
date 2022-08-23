@@ -27,7 +27,6 @@ class MovieCell: UITableViewCell {
         } else {
             indicator.isHidden = true
         }
-        
         movieNameLabel.text = model.title ?? defaultString
         overviewLabel.text = model.overview ?? defaultString
         
@@ -48,7 +47,7 @@ class MovieCell: UITableViewCell {
         // setup image
         let imageString = model.posterPath
         if imageString != nil {
-            let urlPath = "https://image.tmdb.org/t/p/w500"
+            let urlPath = URLManager.shared.imagePath
             let url = URL(string: urlPath + imageString!)
             movieImage.loadingIndicator()
             movieImage.kf.setImage(with: url)

@@ -8,7 +8,9 @@
 import UIKit
 import CoreData
 
-class WatchlistViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class WatchlistViewController: UIViewController,
+                               UITableViewDelegate,
+                               UITableViewDataSource {
     
     private var watchlist: [Movie] = []
     private var movies = [MovieModel]()
@@ -41,14 +43,17 @@ class WatchlistViewController: UIViewController, UITableViewDelegate, UITableVie
     private func sorting() {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
+            segmentedControl.selectedSegmentTintColor = #colorLiteral(red: 0.5311042666, green: 0.7751688361, blue: 0.6109445095, alpha: 1)
             sortingActive = false
             movies.removeAll()
             fetchFromCoreData(withStatus: 0)
         case 1:
+            segmentedControl.selectedSegmentTintColor = #colorLiteral(red: 0.3547364473, green: 0.7621669769, blue: 0.7401419282, alpha: 1)
             sortingActive = true
             sortedMovies.removeAll()
             fetchFromCoreData(withStatus: 1)
         case 2:
+            segmentedControl.selectedSegmentTintColor = #colorLiteral(red: 0.007972300053, green: 0.7087039948, blue: 0.8930794001, alpha: 1)
             sortingActive = true
             sortedMovies.removeAll()
             fetchFromCoreData(withStatus: 2)
@@ -141,7 +146,7 @@ class WatchlistViewController: UIViewController, UITableViewDelegate, UITableVie
     // Register custom cell
     private func registerTableViewCells() {
         let textFieldCell = UINib(nibName: "MovieCell", bundle: nil)
-        self.tableView.register(textFieldCell,forCellReuseIdentifier: "customCell")
+        self.tableView.register(textFieldCell,forCellReuseIdentifier: "movieCell")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -153,7 +158,7 @@ class WatchlistViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as? MovieCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath) as? MovieCell {
             if sortingActive {
                 cell.setup(model: sortedMovies[indexPath.row])
             } else {

@@ -8,10 +8,11 @@
 import UIKit
 import Kingfisher
 
-class TrendingTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TrendingTableViewController: UIViewController,
+                                   UITableViewDelegate,
+                                   UITableViewDataSource {
     
     private var movies = [MovieModel]()
-    private var page = 1
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -35,7 +36,7 @@ class TrendingTableViewController: UIViewController, UITableViewDelegate, UITabl
     // Register custom cell
     private func registerTableViewCells() {
         let textFieldCell = UINib(nibName: "MovieCell", bundle: nil)
-        self.tableView.register(textFieldCell,forCellReuseIdentifier: "customCell")
+        self.tableView.register(textFieldCell,forCellReuseIdentifier: "movieCell")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -43,7 +44,7 @@ class TrendingTableViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as? MovieCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath) as? MovieCell {
             cell.setup(model: movies[indexPath.row])
             cell.indicator.isHidden = true
             cell.backgroundColor = #colorLiteral(red: 0.009907525033, green: 0.1478210092, blue: 0.2553791106, alpha: 1)

@@ -15,6 +15,7 @@ class URLManager {
     // Path
     var searchPath = "/3/search/movie"
     var trendingPath = "/3/trending/movie/week"
+    let imagePath = "https://image.tmdb.org/t/p/w500"
     
     // Parametres
     var params: [URLQueryItem] {

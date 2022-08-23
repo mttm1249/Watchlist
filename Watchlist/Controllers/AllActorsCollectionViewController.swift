@@ -7,7 +7,10 @@
 
 import UIKit
 
-class AllActorsCollectionViewController: UIViewController, UISheetPresentationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
+class AllActorsCollectionViewController: UIViewController,
+                                         UISheetPresentationControllerDelegate,
+                                         UICollectionViewDelegate,
+                                         UICollectionViewDataSource {
     
     override var sheetPresentationController: UISheetPresentationController {
         presentationController as! UISheetPresentationController
@@ -28,13 +31,13 @@ class AllActorsCollectionViewController: UIViewController, UISheetPresentationCo
         sheetPresentationController.prefersGrabberVisible = true
         sheetPresentationController.selectedDetentIdentifier = .medium
         sheetPresentationController.detents = [.medium(), .large()]
-        registerCustomCell()
+        registerCell()
         fetchCastPersons()
     }
     
-    func registerCustomCell() {
-        let customCell = UINib(nibName: "PersonCell", bundle: nil)
-        self.collectionView.register(customCell,forCellWithReuseIdentifier: "personCell")
+    func registerCell() {
+        let personCell = UINib(nibName: "PersonCell", bundle: nil)
+        self.collectionView.register(personCell,forCellWithReuseIdentifier: "personCell")
     }
     
     //     MARK: Load data from JSON

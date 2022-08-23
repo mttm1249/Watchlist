@@ -8,7 +8,10 @@
 import UIKit
 import CoreData
 
-class DetailsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class DetailsViewController: UIViewController,
+                             UICollectionViewDelegate,
+                             UICollectionViewDataSource,
+                             UICollectionViewDelegateFlowLayout {
     
     var currentMovie = MovieModel()
     
@@ -22,14 +25,14 @@ class DetailsViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     @IBOutlet weak var companyLabel: UILabel!
     @IBOutlet weak var genresLabel: UILabel!
-    @IBOutlet weak var moviePoster: UIImageView!
+    @IBOutlet weak var movieImage: UIImageView!
     @IBOutlet weak var overviewText: UITextView!
     @IBOutlet weak var watchlistButton: UIButton!
     @IBOutlet weak var castCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        registerCustomCell()
+        registerCell()
         fetchCastPersons()
         fetchDetails()
         castCollectionView.delegate = self
@@ -58,11 +61,17 @@ class DetailsViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     private func loadImage() {
-        let imageString = currentMovie.posterPath
-        let urlPath = "https://image.tmdb.org/t/p/w500"
-        let url = URL(string: urlPath + imageString!)
-        moviePoster.loadingIndicator()
-        moviePoster.kf.setImage(with: url)
+        if currentMovie.posterPath != nil {
+            let imageString = currentMovie.posterPath
+            let urlPath = URLManager.shared.imagePath
+            let url = URL(string: urlPath + imageString!)
+            movieImage.loadingIndicator()
+            movieImage.kf.setImage(with: url)
+        } else {
+            let emptyMovieImage = (UIImage(systemName: "multiply"))
+            movieImage.image = emptyMovieImage
+            movieImage.contentMode = .scaleAspectFit
+        }
     }
     
     @IBAction func watchlistButtonAction(_ sender: Any) {
@@ -205,9 +214,9 @@ class DetailsViewController: UIViewController, UICollectionViewDelegate, UIColle
         return CGSize(width: 90, height: 160)
     }
         
-    func registerCustomCell() {
-        let customCell = UINib(nibName: "PersonCell", bundle: nil)
-        self.castCollectionView.register(customCell,forCellWithReuseIdentifier: "personCell")
+    func registerCell() {
+        let personCell = UINib(nibName: "PersonCell", bundle: nil)
+        self.castCollectionView.register(personCell,forCellWithReuseIdentifier: "personCell")
     }
     
 }

@@ -8,7 +8,11 @@
 import UIKit
 import Kingfisher
 
-class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchControllerDelegate, UISearchBarDelegate {
+class SearchViewController: UIViewController,
+                            UITableViewDelegate,
+                            UITableViewDataSource,
+                            UISearchControllerDelegate,
+                            UISearchBarDelegate {
     
     private let userDefaults = UserDefaults.standard
     private let searchController = UISearchController(searchResultsController: nil)
@@ -89,7 +93,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.tableView.register(searchTextCell,forCellReuseIdentifier: "historyTextCell")
         
         let movieCell = UINib(nibName: "MovieCell", bundle: nil)
-        self.tableView.register(movieCell,forCellReuseIdentifier: "customCell")
+        self.tableView.register(movieCell,forCellReuseIdentifier: "movieCell")
     }
     
     //     MARK: UITableView DataSource
@@ -110,7 +114,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 return searchTextCell
             }
         } else {
-            if let movieCell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as? MovieCell {
+            if let movieCell = tableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath) as? MovieCell {
                 movieCell.setup(model: movies[indexPath.row])
                 movieCell.indicator.isHidden = true
                 movieCell.backgroundColor = #colorLiteral(red: 0.009907525033, green: 0.1478210092, blue: 0.2553791106, alpha: 1)
